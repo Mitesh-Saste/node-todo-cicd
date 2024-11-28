@@ -25,7 +25,7 @@
                    }
              }
          }
-         stage("Deploy"){
+         stage("Deploy the Project"){
                steps{
                    echo "Deploying the container"
                    sh "docker compose down"
