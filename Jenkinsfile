@@ -1,10 +1,10 @@
  pipeline{
-     agent { label 'dev'}
+     agent { label 'mitesh'}
      stages {
          stage("Clone Code"){
              steps{
                  echo "Cloning the code"
-                 git url: "https://github.com/iam-harshsoni/node-todo-cicd", branch: "master"
+                 git url: "https://github.com/Mitesh-Saste/node-todo-cicd", branch: "master"
              }
          }
          stage("Build"){
@@ -16,7 +16,7 @@
          stage("Push to DockerHub"){
                steps{
                    echo "Pushing the image to DockerHub"
-                   withCredentials([usernamePassword(credentialsId:"dockerHubCred",
+                   withCredentials([usernamePassword(credentialsId:"DockerHub",
                    passwordVariable:"dockerHubPass",
                    usernameVariable:"dockerHubUser")]){
                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
@@ -28,8 +28,8 @@
          stage("Deploy the Project"){
                steps{
                    echo "Deploying the container"
-                   sh "docker compose down"
-                   sh "docker compose up -d" 
+                   sh "docker-compose down"
+                   sh "docker-compose up -d" 
              }
          }
      }
