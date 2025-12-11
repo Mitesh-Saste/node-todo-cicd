@@ -1,5 +1,4 @@
  pipeline{
-     agent { label 'mitesh'}
      stages {
          stage("Clone Code"){
              steps{
